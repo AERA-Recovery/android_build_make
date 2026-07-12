@@ -478,6 +478,13 @@ ifneq ($(wildcard vendor/twrp/build/sepolicy/sepolicy.mk),)
 $(eval include vendor/twrp/build/sepolicy/sepolicy.mk)
 endif
 
+# OrangeFox: bridge OF_* feature flags into the twrpVarsPlugin Soong namespace.
+# Kept in vendor/recovery so the upstream TWRP config stays untouched; must run
+# after BoardConfigTWRP.mk above (which creates the namespace).
+ifneq ($(wildcard vendor/recovery/orangefox_soong_config.mk),)
+include vendor/recovery/orangefox_soong_config.mk
+endif
+
 # The build system exposes several variables for where to find the kernel
 # headers:
 #   TARGET_DEVICE_KERNEL_HEADERS is automatically created for the current
