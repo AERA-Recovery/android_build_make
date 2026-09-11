@@ -481,8 +481,8 @@ endif
 # OrangeFox: bridge OF_* feature flags into the twrpVarsPlugin Soong namespace.
 # Kept in vendor/recovery so the upstream TWRP config stays untouched; must run
 # after BoardConfigTWRP.mk above (which creates the namespace).
-ifneq ($(wildcard vendor/recovery/orangefox_soong_config.mk),)
-include vendor/recovery/orangefox_soong_config.mk
+ifneq ($(wildcard vendor/recovery/aera_soong_config.mk),)
+include vendor/recovery/aera_soong_config.mk
 endif
 
 # The build system exposes several variables for where to find the kernel
@@ -778,12 +778,12 @@ EXTRACT_KERNEL := build/make/tools/extract_kernel.py
 HOST_JDK_TOOLS_JAR := $(ANDROID_JAVA8_HOME)/lib/tools.jar
 # Darth9
 # OrangeFox post script
-FOX_CURRENT_DEV_STR := $(shell git -C bootable/recovery log -1 --format='%ad (%h)' --date=short)
+AERA_CURRENT_DEV_STR := $(shell git -C bootable/recovery log -1 --format='%ad (%h)' --date=short)
 ifdef NOT_ORANGEFOX
-  FOX_VENDOR :=
+  AERA_VENDOR :=
   BASH :=
 else
-  FOX_VENDOR := vendor/recovery/OrangeFox_A16.sh
+  AERA_VENDOR := vendor/recovery/AERA_A16.sh
   BASH := bash
   # broken plugins global support
   BUILD_BROKEN_PLUGIN_VALIDATION := soong-libaosprecovery_defaults soong-libguitwrp_defaults soong-libminuitwrp_defaults soong-vold_defaults

@@ -1171,13 +1171,13 @@ export ANDROID_BUILD_TOP=$(gettop)
 
 #
 # Darth9
-# prepare environment variables for importing to OrangeFox_A16.sh
+# prepare environment variables for importing to AERA_A16.sh
 function orangefox_envsetup() {
 
-    export FOX_MANIFEST_ROOT=$(gettop)
+    export AERA_MANIFEST_ROOT=$(gettop)
 
     if [ -z "$NOT_ORANGEFOX" ]; then
-       if [ ! -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox_defaults.go -a ! -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox.mk ]; then
+       if [ ! -f $AERA_MANIFEST_ROOT/bootable/recovery/orangefox_defaults.go -a ! -f $AERA_MANIFEST_ROOT/bootable/recovery/orangefox.mk ]; then
    	  export NOT_ORANGEFOX=1
        fi
     fi
@@ -1194,7 +1194,7 @@ function orangefox_envsetup() {
        if [ -n "$OUT" ]; then
           export OUT_DIR="$OUT"
        else
-          export OUT_DIR="$FOX_MANIFEST_ROOT/out"
+          export OUT_DIR="$AERA_MANIFEST_ROOT/out"
           export OUT="$OUT_DIR"
        fi
     else
@@ -1203,7 +1203,7 @@ function orangefox_envsetup() {
     	fi
     fi
 
-#   [ -s $FOX_MANIFEST_ROOT/frameworks/base/services/core/xsd/vts/Android.bp ] && echo -n "" > $FOX_MANIFEST_ROOT/frameworks/base/services/core/xsd/vts/Android.bp
+#   [ -s $AERA_MANIFEST_ROOT/frameworks/base/services/core/xsd/vts/Android.bp ] && echo -n "" > $AERA_MANIFEST_ROOT/frameworks/base/services/core/xsd/vts/Android.bp
 }
 
 orangefox_envsetup
