@@ -473,13 +473,18 @@ endif
 # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
+# Translate AERA's public device configuration before the recovery board and
+# Soong bridges consume their established backend variable names.
+ifneq ($(wildcard bootable/recovery/aera_config.mk),)
+include bootable/recovery/aera_config.mk
+endif
 include vendor/twrp/config/BoardConfigTWRP.mk
 ifneq ($(wildcard vendor/twrp/build/sepolicy/sepolicy.mk),)
 $(eval include vendor/twrp/build/sepolicy/sepolicy.mk)
 endif
 
-# OrangeFox: bridge OF_* feature flags into the twrpVarsPlugin Soong namespace.
-# Kept in vendor/recovery so the upstream TWRP config stays untouched; must run
+# AERA: export translated backend feature flags to the recovery Soong namespace.
+# Kept in vendor/recovery so the upstream TWRP config stays untouched; this must run
 # after BoardConfigTWRP.mk above (which creates the namespace).
 ifneq ($(wildcard vendor/recovery/aera_soong_config.mk),)
 include vendor/recovery/aera_soong_config.mk
