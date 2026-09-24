@@ -1762,7 +1762,7 @@ $(INSTALLED_VENDOR_BOOTIMAGE_TARGET): $(AVBTOOL) $(BOARD_AVB_VENDOR_BOOTIMAGE_KE
 	   $(BOARD_AVB_VENDOR_BOOT_ADD_HASH_FOOTER_ARGS)
 
 # Darth9 - vendor_boot
-ifneq ($(NOT_ORANGEFOX),1)
+ifneq ($(NOT_AERA),1)
 	$(BASH) $(AERA_VENDOR) AERA_VENDOR_CMD="Fox_After_Recovery_Image" \
 	AERA_MANIFEST_VER="16.0" \
   	BOARD_BOOT_HEADER_VERSION="$(BOARD_BOOT_HEADER_VERSION)" \
@@ -2831,7 +2831,7 @@ $(INTERNAL_RECOVERY_RAMDISK_FILES_TIMESTAMP): $(MKBOOTFS) \
 	# Modifying ramdisk contents...
 
 # Darth9
-ifneq ($(NOT_ORANGEFOX),1)
+ifneq ($(NOT_AERA),1)
 	$(BASH) $(AERA_VENDOR) AERA_VENDOR_CMD="Fox_Before_Recovery_Image" \
 	AERA_MANIFEST_VER="16.0" \
   	BOARD_BOOT_HEADER_VERSION="$(BOARD_BOOT_HEADER_VERSION)" \
@@ -2931,7 +2931,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(recoveryimage-deps)
 	$(call build-recoveryimage-target, $@, $(PRODUCT_OUT)/$(subst .img,,$(subst boot,kernel,$(notdir $@))))
 
 # Darth9 (recovery-as-boot)
-ifneq ($(NOT_ORANGEFOX),1)
+ifneq ($(NOT_AERA),1)
 	$(BASH) $(AERA_VENDOR) AERA_VENDOR_CMD="Fox_After_Recovery_Image" \
 	AERA_MANIFEST_VER="16.0" \
   	BOARD_BOOT_HEADER_VERSION="$(BOARD_BOOT_HEADER_VERSION)" \
@@ -2997,7 +2997,7 @@ endif # BUILDING_RECOVERY_IMAGE
 recoveryimage: $(INSTALLED_RECOVERYIMAGE_TARGET) $(RECOVERY_RESOURCE_ZIP)
 
 # Darth9 (recovery as recovery)
-ifneq ($(NOT_ORANGEFOX),1)
+ifneq ($(NOT_AERA),1)
 ifneq ($(BOARD_USES_RECOVERY_AS_BOOT),true)
 	$(BASH) $(AERA_VENDOR) AERA_VENDOR_CMD="Fox_After_Recovery_Image" \
 	AERA_MANIFEST_VER="16.0" \

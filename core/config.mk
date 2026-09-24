@@ -782,9 +782,9 @@ EXTRACT_KERNEL := build/make/tools/extract_kernel.py
 # Path to tools.jar
 HOST_JDK_TOOLS_JAR := $(ANDROID_JAVA8_HOME)/lib/tools.jar
 # Darth9
-# OrangeFox post script
+# AERA post script
 AERA_CURRENT_DEV_STR := $(shell git -C bootable/recovery log -1 --format='%ad (%h)' --date=short)
-ifdef NOT_ORANGEFOX
+ifdef NOT_AERA
   AERA_VENDOR :=
   BASH :=
 else

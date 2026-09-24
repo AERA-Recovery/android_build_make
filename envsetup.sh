@@ -320,7 +320,7 @@ function printconfig()
     _get_build_var_cached report_config
     
     # Darth9
-    if [ "$NOT_ORANGEFOX" != "1" ]; then
+    if [ "$NOT_AERA" != "1" ]; then
     	local DEVICE=$(cut -d'_' -f2 <<<$TARGET_PRODUCT)
     	mkdir -p /tmp/$DEVICE
     	export > /tmp/$DEVICE/fox_env.sh
@@ -1172,22 +1172,22 @@ export ANDROID_BUILD_TOP=$(gettop)
 #
 # Darth9
 # prepare environment variables for importing to AERA_A16.sh
-function orangefox_envsetup() {
+function aera_envsetup() {
 
     export AERA_MANIFEST_ROOT=$(gettop)
 
-    if [ -z "$NOT_ORANGEFOX" ]; then
-       if [ ! -f $AERA_MANIFEST_ROOT/bootable/recovery/orangefox_defaults.go -a ! -f $AERA_MANIFEST_ROOT/bootable/recovery/orangefox.mk ]; then
-   	  export NOT_ORANGEFOX=1
+    if [ -z "$NOT_AERA" ]; then
+       if [ ! -f $AERA_MANIFEST_ROOT/bootable/recovery/aera_defaults.go -a ! -f $AERA_MANIFEST_ROOT/bootable/recovery/aera_build.mk ]; then
+	  export NOT_AERA=1
        fi
     fi
 
-    if [ "$NOT_ORANGEFOX" = "1" ]; then
-        echo "- Not OrangeFox! ..."
+    if [ "$NOT_AERA" = "1" ]; then
+        echo "- Not AERA! ..."
         return
     fi
 
-    unset NOT_ORANGEFOX
+    unset NOT_AERA
     export ALLOW_MISSING_DEPENDENCIES=true
     
     if [ -z "$OUT_DIR" ]; then
@@ -1206,6 +1206,6 @@ function orangefox_envsetup() {
 #   [ -s $AERA_MANIFEST_ROOT/frameworks/base/services/core/xsd/vts/Android.bp ] && echo -n "" > $AERA_MANIFEST_ROOT/frameworks/base/services/core/xsd/vts/Android.bp
 }
 
-orangefox_envsetup
+aera_envsetup
 
 # Darth9
